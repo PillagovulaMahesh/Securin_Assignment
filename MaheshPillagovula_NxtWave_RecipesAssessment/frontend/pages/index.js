@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import Filters from "@/components/Filters";
 import RecipeTable from "@/components/RecipeTable";
 
@@ -6,16 +7,25 @@ export default function HomePage() {
   const [filters, setFilters] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        🍲 Securin Recipe Explorer
-      </h1>
+    <>
+      <Head>
+        <title>🍲 Securin Recipe Explorer</title>
+        <meta name="description" content="Explore delicious US recipes with filters" />
+        {/* ✅ Pointing favicon to styles folder */}
+        <link rel="icon" href="/styles/favicon.ico" />
+      </Head>
 
-      {/* Filters */}
-      <Filters onFilter={setFilters} />
+      <div className="min-h-screen bg-gray-50 p-6">
+        <h1 className="text-3xl font-bold text-center mb-6">
+          🍲 Securin Recipe Explorer
+        </h1>
 
-      {/* Recipes Table */}
-      <RecipeTable filters={filters} />
-    </div>
+        {/* Filters */}
+        <Filters onFilter={setFilters} />
+
+        {/* Recipes Table */}
+        <RecipeTable filters={filters} />
+      </div>
+    </>
   );
 }
